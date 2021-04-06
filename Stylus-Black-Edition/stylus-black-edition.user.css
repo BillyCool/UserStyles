@@ -38,7 +38,7 @@
     }
 
     /* Main interface */
-    * {
+    *, *:before, *:after {
         box-shadow: none !important;
     }
 
@@ -250,6 +250,16 @@
 
     .all-styles-hidden-by-filters:before, .all-styles-hidden-by-filters:after {
         color: text-1 !important;
+    }
+    
+    .install {
+        border: 1px solid highlight !important;
+        text-shadow: none !important;
+    }
+    
+    .install::before, .install:active::before, .install:active:hover::before{
+        background: bg-1 !important;
+        border: none !important;
     }
 
     /* Code editor */
