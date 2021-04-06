@@ -1,0 +1,86 @@
+/* ==UserStyle==
+@name 「YouTube Black Edition」
+@namespace BillyCool
+@version 1.1.0
+@description A pitch black userstyle for Youtube with a number of small tweaks and improvements.
+@author BillyCool
+@homepageURL https://gist.github.com/BillyCool/00742755d1e7e7e8fc33184dcc76fc9a
+@updateURL https://gist.githubusercontent.com/BillyCool/00742755d1e7e7e8fc33184dcc76fc9a/raw/black-youtube.user.css
+@license GPL-3.0-or-later
+@preprocessor stylus
+
+@var color bg-1 "Background color" #000
+@var range max-grid-size "Maximum grid size" [6, 6, 16, 1]
+@var checkbox hide-prev-next "Hide replay and next buttons in video player" 0
+@var checkbox hide-watch-later "Hide watch later button" 0
+@var checkbox hide-add-queue "Hide add to queue button" 0
+@var checkbox hide-merch "Hide merch in video descriptions" 0
+@var checkbox hide-join "Hide join button below video player" 0
+@var checkbox like-dislike-color "Colored likes/dislikes" 0
+@var checkbox hover-block "[Youtube Blocker] Show block icon on hover only" 1
+==/UserStyle== */
+@-moz-document domain("youtube.com") {
+    html:not(.style-scope)[dark], :not(.style-scope)[dark] {
+        --yt-spec-general-background-a: bg-1;
+        --yt-spec-general-background-b: bg-1;
+        --yt-spec-brand-background-primary: bg-1;
+        --yt-spec-brand-background-solid: bg-1;
+        --ytd-searchbox-background: bg-1;
+        --ytd-searchbox-legacy-button-color: bg-1;
+        --ytd-grid-max-width: calc(100% - 160px);
+        --ytd-grid-6-columns-width: (1284 / 6 * max-grid-size)px; /* var(--ytd-grid-6-columns-width) == 1284px */
+    }
+
+    if (hide-prev-next) {
+        .ytp-prev-button, .ytp-next-button {
+            display: none !important;
+        }
+    }
+
+    if (hide-watch-later) {
+        #hover-overlays .ytd-thumbnail[aria-label="Watch later"] {
+            display: none !important;
+        }
+    }
+
+    if (hide-add-queue) {
+        #hover-overlays .ytd-thumbnail[aria-label="Add to queue"] {
+            display: none !important;
+        }
+    }
+
+    if (hide-merch) {
+        #merch-shelf {
+            display: none !important;
+        }
+    }
+
+    if (hide-join) {
+        #sponsor-button {
+            display: none !important;
+        }
+    }
+
+    if (like-dislike-color) {
+        #like-bar.ytd-sentiment-bar-renderer {
+            background: var(--google-green-700);
+        }
+
+        #container.ytd-sentiment-bar-renderer {
+            background: var(--google-red-700);
+        }
+    }
+
+    if (hover-block) {
+        ytd-thumbnail {
+            .ytbck-quickblock {
+                display: none !important;
+
+                ~/:hover ^[1..-1] {
+                    display: block !important;
+                    background: var(--yt-spec-general-background-a) !important;
+                }
+            }
+        }
+    }
+}
