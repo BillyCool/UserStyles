@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「Stylus Black Edition」
 @namespace BillyCool
-@version 1.0.0
+@version 1.0.1
 @description A pitch black userstyle for the Stylus extension.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/Stylus-Black-Edition
@@ -15,7 +15,7 @@
 @var range border-radius "Input/button border radius" [4, 0, 12, 1, "px"]
 
 ==/UserStyle== */
-@-moz-document regexp("chrome-extension://.*"), regexp("moz-extension://.*") {
+@-moz-document regexp('^(moz|chrome)-extension://.*$') {
     /* Variable declarations */
     bg-2 = lightenOrDarken(bg-1);
     text-2 = lightenOrDarken(text-1, 25%);

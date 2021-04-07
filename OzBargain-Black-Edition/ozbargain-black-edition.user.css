@@ -1,0 +1,1035 @@
+/* ==UserStyle==
+@name 「OzBargain Black Edition」
+@namespace BillyCool
+@version 1.2.5
+@description A highly customizable userstyle for OzBargain with numerious options and tweaks.
+@author BillyCool
+@homepageURL https://gist.github.com/BillyCool/cd2d74feeeb3736c1fd46a34c76ae88b
+@updateURL https://gist.githubusercontent.com/BillyCool/cd2d74feeeb3736c1fd46a34c76ae88b/raw/black-ozbargain.user.css
+@license GPL-3.0-or-later
+@preprocessor stylus
+
+@var color bg-1 "Background color" #000
+@var color text-1 "Text color" #e1e1e1
+@var color highlight "Highlight color" #cd6702
+@var color dollar "Dollar value color" #cd6702
+@var range color-step "Color steps" [5, 5, 15, 1, "%"]
+@var checkbox hide-sidebar "Hide sidebar" 0
+@var checkbox hide-footer "Hide footer" 0
+@var checkbox hide-newsletter "Hide newsletter" 1
+@var checkbox hide-highlighted-comps "Hide highlighted competitions" 0
+@var checkbox hide-highlighted-topics "Hide highlighted topics" 0
+@var checkbox hide-related-stores "Hide related stores" 0
+@var checkbox hide-unpublished-deals "Hide unpublished deals & topics" 0
+@var checkbox hide-social-share "Hide social media share buttons" 0
+@var checkbox hide-sticky "Hide sticky buttons" 0
+@var color primary "Misc: Primary color" #3881ff
+@var color secondary "Misc: Secondary color" #808080
+@var color success "Misc: Success color" #2ddd3a
+@var color danger "Misc: Danger color" #dd2d2d
+@var color warning "Misc: Warning color" #ffc107
+@var color info "Misc: Info color" #2ddcff
+==/UserStyle== */
+@-moz-document domain("ozbargain.com.au") {
+    /* Variable declarations */
+    bg-2 = lightenOrDarken(bg-1, color-step);
+    text-2 = lightenOrDarken(text-1, color-step * 3);
+
+    /* Helper functions */
+    lightenOrDarken(color, amount = 5%) {
+        if (dark(color)) {
+            return lighten(color, amount);
+        } else {
+            return darken(color, amount);
+        }
+    }
+
+    getInverseColor(color) {
+        if (dark(color)) {
+            text-1;
+        } else {
+            bg-1;
+        }
+    }
+
+    body {
+        color: text-1 !important;
+        background: bg-1 !important;
+    }
+
+    a {
+        color: text-1 !important;
+
+        &:hover {
+            color: highlight !important;
+
+            .fa-border {
+                border-color: highlight !important;
+            }
+        }
+
+        &.btn, &.badge {
+            color: text-1 !important;
+            background: bg-1 !important;
+            border-color: highlight !important;
+
+            &:hover {
+                color: highlight !important;
+            }
+        }
+
+        &.external, &.internal, &.wikilink1, &.wikilink2, &.urlextern, &.reflink {
+            color: text-2 !important;
+            border-color: text-2 !important;
+
+            &:hover {
+                color: highlight !important;
+                border-color: highlight !important;
+            }
+        }
+
+        .halfleft {
+            color: text-1;
+            background: bg-1 !important;
+
+            &:hover {
+                color: highlight !important;
+            }
+        }
+
+        .halfright {
+            color: bg-1;
+            background: text-1;
+
+            &:hover {
+                color: highlight !important;
+            }
+        }
+    }
+
+    input.btn, input.button, button.btn {
+        color: text-1 !important;
+        background: bg-1 !important;
+        border-color: highlight !important;
+
+        &:hover {
+            color: highlight !important;
+
+            &:disabled {
+                color: text-2 !important;
+            }
+        }
+    }
+
+    input, select, textarea {
+        color: text-1 !important;
+        background: bg-1 !important;
+        border-color: highlight !important;
+
+        optgroup {
+            background: bg-2 !important;
+        }
+    }
+
+    fieldset, blockquote {
+        border-color: highlight !important;
+        position: relative;
+
+        &.collapsible legend {
+            background: bg-1 !important;
+            border-color: highlight !important;
+
+            &:before {
+                content: '';
+                background: url('/files/images/toggle.png?v=1') 5px 50% no-repeat !important;
+                background-position: 0 0 !important;
+                height: 9px;
+                width: 9px;
+                position: absolute;
+                left: 12px;
+                top: -16px;
+            }
+        }
+
+        &.collapsed legend:before {
+            background-position: 0 -18px !important;
+        }
+    }
+
+    table {
+        background: bg-1 !important;
+        border-color: highlight !important;
+
+        th, td {
+            color: text-1 !important;
+            background: bg-1 !important;
+            border-bottom: 1px solid highlight !important;
+            border-color: highlight !important;
+
+            &.unpublished {
+                background: bg-2 !important;
+            }
+        }
+    }
+
+    #header {
+        background: bg-1 !important;
+
+        #menu {
+            li {
+                a {
+                    background: bg-1 !important;
+                }
+
+                &.active > a {
+                    color: bg-1 !important;
+                    background: highlight !important;
+                }
+
+                .menupopup {
+                    color: text-1 !important;
+                    background: bg-1 !important;
+                    border-color: highlight !important;
+                    box-shadow: none !important;
+
+                    h3, .group, .userinfo, .noti-item, .externallogin {
+                        color: highlight !important;
+                        background: bg-1 !important;
+                        border-color: highlight !important;
+                    }
+                }
+            }
+        }
+    }
+
+    #header2nd {
+        background: bg-1 !important;
+        box-shadow: none !important;
+        border-top: 1px solid highlight !important;
+
+        a {
+            background: bg-1 !important;
+
+            &.active {
+                color: bg-1 !important;
+                background: highlight !important;
+            }
+        }
+    }
+
+    #tooltip {
+        background: bg-1 !important;
+        box-shadow: none !important;
+        border-color: highlight !important;
+
+        #tooltip-title {
+            color: highlight !important;
+            background: bg-1 !important;
+            font-weight: bold;
+        }
+
+        .tooltip-menu li a {
+            color: text-1 !important;
+
+            &:hover {
+                background: bg-1 !important;
+                color: highlight !important;
+            }
+        }
+
+        #tooltip-copy, #tooltip-close {
+            color: text-1 !important;
+        }
+
+        .tooltip-options {
+            border-color: highlight !important;
+        }
+
+        a {
+            color: text-2 !important;
+
+            &:hover {
+                color: highlight !important;
+            }
+        }
+    }
+
+    main {
+        color: text-1 !important;
+        background: bg-1 !important;
+
+        .fpnotice {
+            a {
+                border: 1px solid highlight !important;
+                background: bg-2 !important;
+
+                span {
+                    color: highlight;
+                }
+            }
+        }
+
+        .fpnotice-apd {
+            border-color: highlight !important;
+        }
+
+        .countdown-cdval {
+            color: text-1 !important;
+            background: bg-1 !important;
+            border-color: highlight !important;
+        }
+
+        .countdown-lbl {
+            color: text-1 !important;
+        }
+
+        .messages {
+            color: text-1 !important;
+            background: bg-2 !important;
+            border-color: highlight !important;
+            box-shadow: none !important;
+
+            &.form-item {
+                background: bg-1 !important;
+            }
+
+            .days {
+                color: highlight !important;
+            }
+
+            .votes {
+                color: bg-1 !important;
+                background: success !important;
+                font-weight: bold !important;
+            }
+
+            &.node {
+                background: bg-1 !important;
+
+                .classified-type-tag {
+                    &.want {
+                        background: primary !important;
+                    }
+
+                    a {
+                        color: bg-2 !important;
+                    }
+                }
+            }
+        }
+
+        h1.tags {
+            color: text-2 !important;
+
+            span {
+                color: text-1 !important;
+                background: bg-1 !important;
+                border-color: highlight !important;
+            }
+        }
+
+        #title, .title, .section, .description {
+            color: text-1 !important;
+            border-color: highlight !important;
+        }
+
+        .foxshot-container {
+            a {
+                background: bg-1 !important;
+                border-color: highlight !important;
+
+                &:hover {
+                    background: bg-2 !important;
+                }
+            }
+        }
+
+        .productlist .img {
+            background: bg-1 !important;
+
+            a {
+                border-color: highlight !important;
+
+                &:hover {
+                    background-color: bg-2 !important;
+                }
+            }
+        }
+
+        .search-results strong {
+            color: bg-1 !important;
+            background: highlight !important;
+        }
+
+        .couponcode {
+            background: bg-2 !important;
+            border-color: highlight !important;
+
+            strong {
+                border-color: highlight !important;
+            }
+        }
+
+        .node {
+            color: text-1 !important;
+
+            .plate {
+                border: none !important;
+                border-radius: 12px !important;
+
+                &.learner {
+                    color: getInverseColor(warning) !important;
+                    background: warning !important;
+                }
+
+                &.greenp {
+                    color: getInverseColor(success) !important;
+                    background: success !important;
+                }
+
+                &.redp {
+                    color: getInverseColor(danger) !important;
+                    background: danger !important;
+                }
+            }
+
+            &.node-teaser {
+                border-color: highlight !important;
+
+                &.expired {
+                    color: text-2 !important;
+
+                    a {
+                        color: text-2 !important;
+
+                        &:hover {
+                            color: highlight !important;
+                        }
+                    }
+
+                    .marker a {
+                        color: getInverseColor(primary) !important;
+                    }
+                }
+
+                &:hover {
+                    background: bg-2 !important;
+                }
+
+                &.feature {
+                    background: bg-1 !important;
+
+                    &:hover {
+                        background: bg-2 !important;
+                    }
+                }
+
+                &.unpublished {
+                    background: bg-2 !important;
+                }
+            }
+        }
+
+        .nodeinfo .extra, .nodeinfo .referral {
+            color: text-1 !important;
+            background: bg-1 !important;
+            border: 1px solid highlight !important;
+        }
+
+        .marker {
+            color: getInverseColor(primary) !important;
+            background: primary !important;
+            border-radius: 12px !important;
+            border: none !important;
+            font-weight: bold !important;
+
+            > a {
+                color: getInverseColor(primary) !important;
+            }
+        }
+
+        .nodeexpiry {
+            &.expired {
+                color: danger !important;
+
+                .marker {
+                    color: getInverseColor(danger) !important;
+                    background: danger !important;
+                }
+            }
+
+            &.inactive {
+                color: text-1 !important;
+
+                .marker {
+                    color: getInverseColor(primary) !important;
+                    background: primary !important;
+                }
+            }
+        }
+
+        .nodefreebie i {
+            color: success !important;
+        }
+
+        .role {
+            border-radius: 12px !important;
+            font-weight: bold !important;
+
+            &.associate {
+                color: getInverseColor(primary) !important;
+                background: primary !important;
+            }
+
+            &.moderator {
+                color: getInverseColor(highlight) !important;
+                background: highlight !important;
+            }
+
+            &.referrer {
+                color: getInverseColor(secondary) !important;
+                background: secondary !important;
+            }
+
+            &.storerep {
+                color: getInverseColor(info) !important;
+                background: info !important;
+            }
+        }
+
+        .dollar {
+            color: dollar !important;
+        }
+
+        .tabs {
+            color: text-1 !important;
+            background: bg-1 !important;
+            border: 1px solid highlight !important;
+
+            li {
+                &.active {
+                    a, a:hover {
+                        color: bg-1 !important;
+                        background: highlight !important;
+                    }
+                }
+
+                a:hover {
+                    color: highlight !important;
+                    background: bg-1 !important;
+                }
+            }
+        }
+
+        .cvb.voteup, .nvb.voteup {
+            color: getInverseColor(success) !important;
+            background: success !important;
+            border-color: lighten(success, 60%) !important;
+
+            &:hover {
+                background: darken(success, 20%) !important;
+            }
+        }
+
+        .cvb.votedown, .nvb.votedown {
+            color: getInverseColor(danger) !important;
+            background: danger !important;
+            border-color: lighten(danger, 60%) !important;
+
+            &:hover {
+                background: darken(danger, 20%) !important;
+            }
+        }
+
+        .fa-minus-circle {
+            color: danger !important;
+
+            &:hover {
+                color: darken(danger, 20%) !important;
+            }
+        }
+
+        .taxonomy {
+            a {
+                background: bg-1 !important;
+                border: 1px solid highlight !important;
+
+                i {
+                    color: highlight !important;
+                }
+            }
+        }
+
+        .comment-op {
+            background: bg-1 !important;
+            border-color: highlight !important;
+        }
+
+        .comment-owner {
+            background: bg-2 !important;
+            border-color: highlight !important;
+        }
+
+        #c-control .bar {
+            background: bg-1 !important;
+            border-color: highlight !important;
+
+            a:hover {
+                background: bg-1 !important;
+            }
+        }
+
+        #s-control {
+            border-color: highlight !important;
+        }
+
+        .comment-hint {
+            background: bg-1 !important;
+            border-color: highlight !important;
+
+            i:hover {
+                color: text-1 !important;
+            }
+
+            .hint {
+                background: bg-2 !important;
+                border-color: highlight !important;
+            }
+        }
+
+        .comment.unpublished {
+            color: danger !important;
+        }
+
+        #livetable tr {
+            border: 1px solid highlight !important;
+        }
+
+        #revdiff {
+            border-color: highlight !important;
+        }
+
+        .preview {
+            border-color: highlight !important;
+        }
+
+        .pager {
+            li {
+                color: text-1 !important;
+                border-color: highlight !important;
+
+                &.pager-current {
+                    color: highlight !important;
+                    background: bg-1 !important;
+                }
+
+                a:hover {
+                    color: highlight !important;
+                    background: bg-1 !important;
+                    border-radius: 4px !important;
+                }
+            }
+        }
+
+        .messages.node span, .tagger {
+            color: getInverseColor(text-2) !important;
+            background: text-2 !important;
+
+            &.expired {
+                color: getInverseColor(danger) !important;
+                background: danger !important;
+            }
+
+            &.longrunning {
+                color: getInverseColor(secondary) !important;
+                background: secondary !important;
+            }
+
+            &.resolved {
+                color: getInverseColor(success) !important;
+                background: success !important;
+            }
+
+            &.targeted {
+                color: getInverseColor(primary) !important;
+                background: primary !important;
+            }
+
+            &.unpublished {
+                color: getInverseColor(secondary) !important;
+                background: secondary !important;
+            }
+
+            &.upcoming {
+                color: getInverseColor(primary) !important;
+                background: primary !important;
+            }
+        }
+
+        .node-social {
+            a {
+                color: #ffffff !important;
+            }
+
+            li.share-re > a {
+                color: #5f99cf !important;
+            }
+        }
+    }
+
+    .gravatar, .usericon {
+        border-color: highlight !important;
+    }
+
+    #sidebar {
+        .votes {
+            color: getInverseColor(success) !important;
+            background: success !important;
+            font-weight: bold !important;
+        }
+    }
+
+    .block {
+        .blocktitle {
+            color: highlight !important;
+            background: bg-1 !important;
+            border: 1px solid highlight !important;
+        }
+
+        .blockcontent {
+            color: text-1 !important;
+            border-color: highlight !important;
+
+            li {
+                border-color: highlight !important;
+                border-right: 0 !important;
+            }
+        }
+    }
+
+    .search {
+        border: 1px solid highlight !important;
+
+        a, button, input[type='text'] {
+            color: text-1 !important;
+            background: bg-1 !important;
+            border-color: highlight !important;
+            border-radius: 0 !important;
+        }
+
+        .fa-search:hover:before {
+            color: highlight !important;
+        }
+    }
+
+    .ac-result {
+        background: bg-1 !important;
+        border-color: highlight !important;
+        box-shadow: none !important;
+
+        li {
+            color: text-1 !important;
+            border-color: highlight !important;
+
+            &:hover {
+                background: bg-2 !important;
+            }
+
+            &.section {
+                color: highlight !important;
+                background: bg-1 !important;
+            }
+        }
+    }
+
+    footer {
+        background: bg-1 !important;
+        box-shadow: none !important;
+        border-top: 1px solid highlight !important;
+    }
+
+    #overlay-box {
+        color: text-1 !important;
+        background: bg-1 !important;
+        border: 1px solid highlight !important;
+        box-shadow: none !important;
+
+        #overlay-title {
+            color: bg-1 !important;
+        }
+    }
+
+    .ui-datepicker {
+        color: text-1 !important;
+        background: bg-1 !important;
+        border-color: highlight !important;
+
+        .ui-datepicker-calendar {
+            thead {
+                color: text-1 !important;
+            }
+
+            td a {
+                background: bg-1 !important;
+
+                &:hover, &.ui-state-highlight {
+                    border-color: highlight !important;
+                }
+            }
+        }
+    }
+
+    .ui-slider {
+        background: text-2 !important;
+
+        .ui-slider-handle {
+            background: bg-2 !important;
+            border-color: highlight !important;
+        }
+    }
+
+    .bigbox, .blocked {
+        color: text-1 !important;
+        background: bg-1 !important;
+        border-color: highlight !important;
+    }
+
+    .competition-fieldset {
+        color: text-1 !important;
+        background: bg-1 !important;
+        border-color: highlight !important;
+
+        .competition-fieldname {
+            color: text-2 !important;
+        }
+    }
+
+    div.dokuwiki {
+        h1, h2, h3, h4, h5 {
+            border-color: highlight !important;
+
+            a {
+                color: text-1 !important;
+            }
+        }
+
+        #toc__inside, .code {
+            color: text-1 !important;
+            background: bg-1 !important;
+            border-color: highlight !important;
+        }
+
+        ul {
+            color: text-1 !important;
+        }
+
+        a.wikilink1, a.wikilink2, a.urlextern {
+            color: text-2 !important;
+            border-color: text-2 !important;
+
+            &:hover {
+                color: highlight !important;
+                border-color: highlight !important;
+            }
+        }
+    }
+
+    .nodegrid {
+        border-color: highlight !important;
+
+        .node {
+            border-color: highlight !important;
+        }
+    }
+
+    .ng2 {
+        background: bg-1 !important;
+
+        li {
+            background: bg-1 !important;
+            border: 1px solid highlight !important;
+            box-shadow: none !important;
+            width: 198px !important;
+
+            .ng2-dealstore {
+                color: text-2 !important;
+                background: bg-1 !important;
+                border-top: 1px solid highlight;
+                border-bottom: 1px solid highlight;
+            }
+
+            .ng2-dealmeta {
+                color: text-1 !important;
+                background: bg-1 !important;
+                border-top: 1px solid highlight;
+            }
+
+            .ng2-dealimg:hover {
+                background: bg-2 !important;
+            }
+        }
+    }
+
+    .meta {
+        color: text-2 !important;
+    }
+
+    .border {
+        border-color: highlight !important;
+    }
+
+    .idcae {
+        background: bg-1 !important;
+
+        body {
+            color: text-1 !important;
+            background: bg-1 !important;
+
+            #wrap {
+                border: 1px solid highlight;
+                border-radius: 4px;
+            }
+        }
+    }
+
+    #stickybtn {
+        box-shadow: none !important;
+
+        a.btn {
+            border-radius: 4px !important;
+        }
+    }
+
+    .tagimg {
+        border-color: highlight !important;
+        box-shadow: none !important;
+    }
+
+    .prodwanthave {
+        li {
+            border-color: highlight !important;
+            color: bg-2 !important;
+
+            &.none {
+                background: lighten(secondary, 50%) !important;
+
+                &.active, &:hover {
+                    background: secondary !important;
+                }
+            }
+
+            &.want {
+                background: lighten(warning, 50%) !important;
+
+                &.active, &:hover {
+                    background: warning !important;
+                }
+            }
+
+            &.have {
+                background: lighten(success, 50%) !important;
+
+                &.active, &:hover {
+                    background: success !important;
+                }
+            }
+
+            &.had {
+                background: lighten(primary, 50%) !important;
+
+                &.active, &:hover {
+                    background: primary !important;
+                }
+            }
+        }
+    }
+
+    .referral {
+        background: bg-2 !important;
+        border: 1px solid highlight;
+    }
+
+    .cnt {
+        color: text-2 !important;
+    }
+
+    span.countbox {
+        color: highlight !important;
+        border-color: highlight !important;
+    }
+
+    .horizontal-participants {
+        color: highlight !important;
+    }
+
+    .privatemsg {
+        background: bg-1 !important;
+        border-color: highlight !important;
+
+        .submitted {
+            color: text-2 !important;
+        }
+    }
+
+    .editable:hover {
+        background: bg-2 !important;
+    }
+
+    .submitted {
+        color: text-2 !important;
+    }
+
+    if (hide-sidebar) {
+        .sidebar {
+            display: none !important;
+        }
+    }
+
+    if (hide-footer) {
+        footer {
+            display: none !important;
+        }
+    }
+
+    if (hide-newsletter) {
+        .node.newsletter {
+            display: none !important;
+        }
+    }
+
+    if (hide-highlighted-comps) {
+        #fpcomps, #fpcomps + div {
+            display: none !important;
+        }
+    }
+
+    if (hide-highlighted-topics) {
+        #fpcomps + div + h2, #fpcomps + div + h2 + div, .node.feature {
+            display: none !important;
+        }
+    }
+
+    if (hide-related-stores) {
+        #relatedstores, .relatedstores {
+            display: none !important;
+        }
+    }
+
+    if (hide-unpublished-deals) {
+        .node.unpublished, table td.unpublished {
+            display: none !important;
+        }
+    }
+
+    if (hide-social-share) {
+        .node-social {
+            display: none !important;
+        }
+    }
+
+    if (hide-sticky) {
+        #stickybtn {
+            display: none !important;
+        }
+    }
+}
