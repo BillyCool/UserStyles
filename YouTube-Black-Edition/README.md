@@ -12,9 +12,14 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 * Hide reply and next buttons in the video player
 * Hide 'Watch later' button when hovering a video
 * Hide 'Add to queue' button when hovering a video
-* Hide merch in video description
-* Hide 'Join' button below the video player
-* Apply green/red color to likes and dislikes
+* Hide featured products in video player
+* Hide merch section below video player
+* Hide 'Join' button below video player
+* Hide bell notification button below video player
+* Hide 'Clip' button below video player
+* Hide 'Share' button below the video player
+* Hide 'Save' button below the video player
+* Hide 'Thanks' button below the video player
 * [[YouTube Blocker](https://youtube-blocker.tyczynski.dev/)] Only show block icon when hovering a video
 
 # Screenshots
