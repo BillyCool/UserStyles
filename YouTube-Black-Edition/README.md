@@ -22,8 +22,8 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
   <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/YouTube-Black-Edition/screenshots/2.png" alt="Subscriptions" height=160 >
 </a>
 <a href="https://raw.githubusercontent.com/BillyCool/UserStyles/master/YouTube-Black-Edition/screenshots/3.png">
-  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/YouTube-Black-Edition/screenshots/3.png" alt="Subscriptions" height=160 >
+  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/YouTube-Black-Edition/screenshots/3.png" alt="Video player" height=160 >
 </a>
 <a href="https://raw.githubusercontent.com/BillyCool/UserStyles/master/YouTube-Black-Edition/screenshots/4.png">
-  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/YouTube-Black-Edition/screenshots/4.png" alt="Subscriptions" height=160 >
+  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/YouTube-Black-Edition/screenshots/4.png" alt="Userstyle options" height=160 >
 </a>
