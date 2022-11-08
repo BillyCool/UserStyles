@@ -3,7 +3,7 @@ A pitch black userstyle for Youtube with a number of small tweaks and improvemen
 
 # Installation
 1. Install the Stylus browser extension ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne), [Opera](https://addons.opera.com/extensions/details/stylus/))
-2. Install the userstyle
+2. Install the [userstyle](https://github.com/BillyCool/UserStyles/raw/master/Youtube-Black-Edition/youtube-black-edition.user.css)
 3. Enjoy
 
 # Features
@@ -15,6 +15,15 @@ A pitch black userstyle for Youtube with a number of small tweaks and improvemen
 * Hide merch in video description
 * Hide 'Join' button below the video player
 * Apply green/red color to likes and dislikes
+* [[Youtube Blocker](https://youtube-blocker.tyczynski.dev/)] Only show block icon when hovering a video
 
 # Screenshots
-TODO
+<a href="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/2.png">
+  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/2.png" alt="Subscriptions" width=300 >
+</a>
+<a href="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/3.png">
+  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/3.png" alt="Subscriptions" width=300 >
+</a>
+<a href="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/4.png">
+  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/4.png" alt="Subscriptions" width=92 >
+</a>
