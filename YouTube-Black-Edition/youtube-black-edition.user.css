@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.1.0
+@version 1.1.1
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -63,11 +63,11 @@
 
     if (like-dislike-color) {
         #like-bar.ytd-sentiment-bar-renderer {
-            background: var(--google-green-700);
+            background: green;
         }
 
         #container.ytd-sentiment-bar-renderer {
-            background: var(--google-red-700);
+            background: red;
         }
     }
 
