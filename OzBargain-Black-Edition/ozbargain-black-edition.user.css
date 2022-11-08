@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「OzBargain Black Edition」
 @namespace BillyCool
-@version 1.2.6
+@version 1.2.7
 @description A highly customizable userstyle for OzBargain with numerious options and tweaks.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/OzBargain-Black-Edition
@@ -265,7 +265,7 @@
         .fpnotice {
             a {
                 border: 1px solid highlight !important;
-                background: bg-2 !important;
+                background-color: bg-2 !important;
 
                 span {
                     color: highlight;
@@ -373,9 +373,35 @@
                 border-color: highlight !important;
             }
         }
+        
+        .bfcm {
+            color: text-1 !important;
+            background: bg-1 !important;
+            border: 1px solid highlight !important;
+            
+            a {
+                &:hover {
+                    color: highlight !important;
+                }
+                
+                div:first-child {
+                    color: text-1 !important;
+                    background: bg-1 !important;
+                }
+
+                div:last-child {
+                    color: bg-1 !important;
+                    background: text-1 !important;
+                }
+            }
+        }
 
         .node {
             color: text-1 !important;
+            
+            .right {
+                position: relative;
+            }
 
             .plate {
                 border: none !important;
@@ -678,6 +704,15 @@
             li.share-re > a {
                 color: #5f99cf !important;
             }
+        }
+    }
+
+    .inv-item {
+        background: bg-1 !important;
+        border: 1px solid highlight !important;
+
+        &.active {
+            background: bg-2 !important;
         }
     }
 
