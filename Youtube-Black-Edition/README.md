@@ -19,11 +19,11 @@ A pitch black userstyle for Youtube with a number of small tweaks and improvemen
 
 # Screenshots
 <a href="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/2.png">
-  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/2.png" alt="Subscriptions" width=300 >
+  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/2.png" alt="Subscriptions" height=160 >
 </a>
 <a href="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/3.png">
-  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/3.png" alt="Subscriptions" width=300 >
+  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/3.png" alt="Subscriptions" height=160 >
 </a>
 <a href="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/4.png">
-  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/4.png" alt="Subscriptions" width=92 >
+  <img src="https://raw.githubusercontent.com/BillyCool/UserStyles/master/Youtube-Black-Edition/screenshots/4.png" alt="Subscriptions" height=160 >
 </a>
