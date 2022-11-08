@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.1.3
+@version 1.2.0
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -14,21 +14,38 @@
 @var checkbox hide-prev-next "Hide replay and next buttons in video player" 0
 @var checkbox hide-watch-later "Hide watch later button" 0
 @var checkbox hide-add-queue "Hide add to queue button" 0
+@var checkbox hide-products "Hide featured products in video player" 0
 @var checkbox hide-merch "Hide merch in video descriptions" 0
 @var checkbox hide-join "Hide join button below video player" 0
-@var checkbox like-dislike-color "Colored likes/dislikes" 0
+@var checkbox hide-bell "Hide bell button below video player" 0
+@var checkbox hide-clip "Hide clip button below video player" 0
+@var checkbox hide-share "Hide share button below video player" 0
+@var checkbox hide-save "Hide save button below video player" 0
+@var checkbox hide-thanks "Hide thanks button below video player" 0
 @var checkbox hover-block "[Youtube Blocker] Show block icon on hover only" 1
 ==/UserStyle== */
 @-moz-document domain("youtube.com") {
-    html:not(.style-scope)[dark], :not(.style-scope)[dark] {
-        --yt-spec-general-background-a: bg-1;
-        --yt-spec-general-background-b: bg-1;
-        --yt-spec-brand-background-primary: bg-1;
-        --yt-spec-brand-background-solid: bg-1;
+    /* Variable declarations */
+    bg-2 = lighten(bg-1, 5%);
+    bg-3 = lighten(bg-1, 8%);
+    bg-4 = lighten(bg-1, 12%);
+    bg-5 = lighten(bg-1, 16%);
+    
+    html[dark], [dark] {
+        --yt-spec-base-background: bg-1;
+        --yt-spec-general-background-a: bg-3;
+        --yt-spec-menu-background: bg-2;
+        --yt-spec-mono-tonal-hover: bg-4;
+        --yt-spec-badge-chip-background: bg-3;
+        --yt-spec-button-chip-background-hover: bg-4;
+        --yt-spec-additive-background: bg-3;
+        --yt-spec-static-overlay-button-secondary: bg-4;
         --ytd-searchbox-background: bg-1;
-        --ytd-searchbox-legacy-button-color: bg-1;
+        --ytd-searchbox-legacy-button-color: bg-3;
+        --ytd-searchbox-legacy-button-hover-color: bg-4;
         --ytd-grid-max-width: calc(100% - 160px);
         --ytd-grid-6-columns-width: (1284 / 6 * max-grid-size)px; /* var(--ytd-grid-6-columns-width) == 1284px */
+        --paper-tooltip-background: bg-4;
     }
 
     if (hide-prev-next) {
@@ -48,6 +65,12 @@
             display: none !important;
         }
     }
+    
+    if (hide-products) {
+        #player-container .ytp-suggested-action {
+            display: none !important;
+        }
+    }
 
     if (hide-merch) {
         ytd-merch-shelf-renderer,
@@ -62,13 +85,33 @@
         }
     }
 
-    if (like-dislike-color) {
-        #like-bar.ytd-sentiment-bar-renderer {
-            background: green !important;
+    if (hide-bell) {
+        #notification-preference-button {
+            display: none !important;
         }
-
-        #container.ytd-sentiment-bar-renderer {
-            background: red !important;
+    }
+    
+    if (hide-clip) {
+        ytd-button-renderer:has(button[aria-label="Clip"]) {
+            display: none !important;
+        }
+    }
+    
+    if (hide-share) {
+        ytd-button-renderer:has(button[aria-label="Share"]) {
+            display: none !important;
+        }
+    }
+    
+    if (hide-save) {
+        ytd-button-renderer:has(button[aria-label="Save to playlist"]) {
+            display: none !important;
+        }
+    }
+    
+    if (hide-thanks) {
+        ytd-button-renderer:has(button[aria-label="Thanks"]) {
+            display: none !important;
         }
     }
 
