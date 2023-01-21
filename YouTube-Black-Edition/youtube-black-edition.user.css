@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.2.0
+@version 1.2.1
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -11,6 +11,7 @@
 
 @var color bg-1 "Background color" #000
 @var range max-grid-size "Maximum grid size" [6, 6, 16, 1]
+@var checkbox unround-thumbnails "Unround video thumbnails" 0
 @var checkbox hide-prev-next "Hide replay and next buttons in video player" 0
 @var checkbox hide-watch-later "Hide watch later button" 0
 @var checkbox hide-add-queue "Hide add to queue button" 0
@@ -46,6 +47,12 @@
         --ytd-grid-max-width: calc(100% - 160px);
         --ytd-grid-6-columns-width: (1284 / 6 * max-grid-size)px; /* var(--ytd-grid-6-columns-width) == 1284px */
         --paper-tooltip-background: bg-4;
+    }
+    
+    if (unround-thumbnails) {
+        ytd-thumbnail a.ytd-thumbnail, ytd-thumbnail::before, {
+            border-radius: 0px !important;
+        }
     }
 
     if (hide-prev-next) {

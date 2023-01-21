@@ -9,6 +9,7 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 # Features
 * Customize background color, comes black by default
 * Increase the maximum number of grid items in subscriptions and channel pages
+* Unround video thumbnails
 * Hide reply and next buttons in the video player
 * Hide 'Watch later' button when hovering a video
 * Hide 'Add to queue' button when hovering a video
