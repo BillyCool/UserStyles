@@ -11,6 +11,7 @@
 
 @var color bg-1 "Background color" #000
 @var range max-grid-size "Maximum grid size" [6, 6, 16, 1]
+@var range endscreen-thumbnail-roundness "Endscreen video thumbnail roundness" [12, 0, 16, 1, "px"]
 @var checkbox unround-thumbnails "Unround video thumbnails" 0
 @var checkbox hide-prev-next "Hide replay and next buttons in video player" 0
 @var checkbox hide-watch-later "Hide watch later button" 0
@@ -49,6 +50,10 @@
         --paper-tooltip-background: bg-4;
     }
     
+    .ytp-ce-video.ytp-ce-large-round, .ytp-ce-playlist.ytp-ce-large-round, .ytp-ce-large-round .ytp-ce-expanding-overlay-background {
+        border-radius: endscreen-thumbnail-roundness !important;
+    }
+
     if (unround-thumbnails) {
         ytd-thumbnail a.ytd-thumbnail, ytd-thumbnail::before, {
             border-radius: 0px !important;
