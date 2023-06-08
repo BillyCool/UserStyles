@@ -1,3 +1,4 @@
+
 # YouTube Black Edition
 A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 
@@ -7,21 +8,22 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 3. Enjoy
 
 # Features
-* Customize background color, comes black by default
-* Increase the maximum number of grid items in subscriptions and channel pages
-* Customize thumbnail roundness at video end screen
-* Unround video thumbnails
-* Hide reply and next buttons in the video player
-* Hide 'Watch later' button when hovering a video
-* Hide 'Add to queue' button when hovering a video
-* Hide featured products in video player
-* Hide merch section below video player
-* Hide 'Join' button below video player
-* Hide bell notification button below video player
-* Hide 'Clip' button below video player
-* Hide 'Share' button below the video player
-* Hide 'Save' button below the video player
-* Hide 'Thanks' button below the video player
+* [Global] Customize background color, comes black by default
+* [Global] Customize thumbnail roundness
+* [Subscriptions] Hide shorts
+* [Subscriptions] Hide upcoming videos
+* [Player] Hide reply and next buttons in the video player
+* [Player] Hide merch shelf
+* [Player] Hide membership 'Join' buttons
+* [Player] Hide 'Share' button
+* [Player] Hide 'Thanks' button
+* [Player] Hide 'Clip' button
+* [Player] Hide 'Save' to playlist button
+* [Player] Hide 3-dot button
+* [Player] Hide links in video description text
+* [Player] Hide video description text
+* [Player] Hide video description chapters
+* [Player] Hide video description channel info
 * [[YouTube Blocker](https://youtube-blocker.tyczynski.dev/)] Only show block icon when hovering a video
 
 # Screenshots

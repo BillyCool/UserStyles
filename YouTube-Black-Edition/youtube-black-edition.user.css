@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.2.2
+@version 1.3.0
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -9,21 +9,22 @@
 @license GPL-3.0-or-later
 @preprocessor stylus
 
-@var color bg-1 "Background color" #000
-@var range max-grid-size "Maximum grid size" [6, 6, 16, 1]
-@var range endscreen-thumbnail-roundness "Endscreen video thumbnail roundness" [12, 0, 16, 1, "px"]
-@var checkbox unround-thumbnails "Unround video thumbnails" 0
-@var checkbox hide-prev-next "Hide replay and next buttons in video player" 0
-@var checkbox hide-watch-later "Hide watch later button" 0
-@var checkbox hide-add-queue "Hide add to queue button" 0
-@var checkbox hide-products "Hide featured products in video player" 0
-@var checkbox hide-merch "Hide merch in video descriptions" 0
-@var checkbox hide-join "Hide join button below video player" 0
-@var checkbox hide-bell "Hide bell button below video player" 0
-@var checkbox hide-clip "Hide clip button below video player" 0
-@var checkbox hide-share "Hide share button below video player" 0
-@var checkbox hide-save "Hide save button below video player" 0
-@var checkbox hide-thanks "Hide thanks button below video player" 0
+@var color bg-1 "[Global] Background color" #000
+@var range thumbnail-roundness "[Global] Thumbnail roundness" [12, 0, 16, 1, "px"]
+@var checkbox hide-shorts "[Subscriptions] Hide shorts" 0
+@var checkbox hide-upcoming "[Subscriptions] Hide upcoming videos" 0
+@var checkbox hide-prev-next "[Player] Hide replay and next buttons in video player" 0
+@var checkbox hide-merch "[Player] Hide merch shelf" 0
+@var checkbox hide-join "[Player] Hide membership join buttons" 0
+@var checkbox hide-share "[Player] Hide share button" 0
+@var checkbox hide-thanks "[Player] Hide thanks button" 0
+@var checkbox hide-clip "[Player] Hide clip button" 0
+@var checkbox hide-save "[Player] Hide save to playlist button" 0
+@var checkbox hide-three-dot "[Player] Hide 3-bot button" 0
+@var checkbox hide-desc-links "[Player] Hide links in video description text" 0
+@var checkbox hide-desc "[Player] Hide video description text" 0
+@var checkbox hide-desc-chapters "[Player] Hide video description chapters" 0
+@var checkbox hide-desc-channel "[Player] Hide video description channel info" 0
 @var checkbox hover-block "[Youtube Blocker] Show block icon on hover only" 1
 ==/UserStyle== */
 @-moz-document domain("youtube.com") {
@@ -45,18 +46,27 @@
         --ytd-searchbox-background: bg-1;
         --ytd-searchbox-legacy-button-color: bg-3;
         --ytd-searchbox-legacy-button-hover-color: bg-4;
-        --ytd-grid-max-width: calc(100% - 160px);
-        --ytd-grid-6-columns-width: (1284 / 6 * max-grid-size)px; /* var(--ytd-grid-6-columns-width) == 1284px */
         --paper-tooltip-background: bg-4;
     }
     
-    .ytp-ce-video.ytp-ce-large-round, .ytp-ce-playlist.ytp-ce-large-round, .ytp-ce-large-round .ytp-ce-expanding-overlay-background {
-        border-radius: endscreen-thumbnail-roundness !important;
+    .ytp-ce-video.ytp-ce-large-round,
+    .ytp-ce-playlist.ytp-ce-large-round,
+    .ytp-ce-large-round .ytp-ce-expanding-overlay-background,
+    .ytp-videowall-still-round-large .ytp-videowall-still-image,
+    ytd-thumbnail a.ytd-thumbnail,
+    ytd-thumbnail::before {
+        border-radius: thumbnail-roundness !important;
     }
-
-    if (unround-thumbnails) {
-        ytd-thumbnail a.ytd-thumbnail, ytd-thumbnail::before, {
-            border-radius: 0px !important;
+    
+    if (hide-shorts) {
+        ytd-rich-item-renderer:has([aria-label="Shorts"]) {
+            display: none !important;
+        }
+    }
+    
+    if (hide-upcoming) {
+        ytd-rich-item-renderer:has([aria-label="Upcoming"]) {
+            display: none !important;
         }
     }
 
@@ -77,34 +87,15 @@
             display: none !important;
         }
     }
-    
-    if (hide-products) {
-        #player-container .ytp-suggested-action {
-            display: none !important;
-        }
-    }
 
     if (hide-merch) {
-        ytd-merch-shelf-renderer,
-        #merch-shelf /* Compatibility */ {
+        ytd-merch-shelf-renderer {
             display: none !important;
         }
     }
 
     if (hide-join) {
-        #sponsor-button {
-            display: none !important;
-        }
-    }
-
-    if (hide-bell) {
-        #notification-preference-button {
-            display: none !important;
-        }
-    }
-    
-    if (hide-clip) {
-        ytd-button-renderer:has(button[aria-label="Clip"]) {
+        .ytd-recognition-shelf-renderer, #sponsor-button {
             display: none !important;
         }
     }
@@ -115,14 +106,50 @@
         }
     }
     
+    if (hide-thanks) {
+        ytd-button-renderer:has(button[aria-label="Thanks"]) {
+            display: none !important;
+        }
+    }
+    
+    if (hide-clip) {
+        ytd-button-renderer:has(button[aria-label="Clip"]) {
+            display: none !important;
+        }
+    }
+    
     if (hide-save) {
         ytd-button-renderer:has(button[aria-label="Save to playlist"]) {
             display: none !important;
         }
     }
     
-    if (hide-thanks) {
-        ytd-button-renderer:has(button[aria-label="Thanks"]) {
+    if (hide-three-dot) {
+        yt-button-shape:has(button[aria-label="More actions"]) {
+            display: none !important;
+        }
+    }
+    
+    if (hide-desc-links) {
+        #description .yt-core-attributed-string--link-inherit-color {
+            display: none !important;
+        }
+    }
+    
+    if (hide-desc) {
+        #description .ytd-text-inline-expander {
+            display: none !important;
+        }
+    }
+    
+    if (hide-desc-chapters) {
+        ytd-structured-description-content-renderer ytd-horizontal-card-list-renderer {
+            display: none !important;
+        }
+    }
+    
+    if (hide-desc-channel) {
+        ytd-structured-description-content-renderer ytd-video-description-infocards-section-renderer {
             display: none !important;
         }
     }
