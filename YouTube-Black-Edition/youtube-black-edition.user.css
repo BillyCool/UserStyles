@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.3.1
+@version 1.3.2
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -108,19 +108,19 @@
     }
     
     if (hide-thanks) {
-        ytd-button-renderer:has(button[aria-label="Thanks"]) {
+        yt-button-view-model:has(button[aria-label="Thanks"]) {
             display: none !important;
         }
     }
     
     if (hide-clip) {
-        ytd-button-renderer:has(button[aria-label="Clip"]) {
+        yt-button-view-model:has(button[aria-label="Clip"]) {
             display: none !important;
         }
     }
     
     if (hide-save) {
-        ytd-button-renderer:has(button[aria-label="Save to playlist"]) {
+        yt-button-view-model:has(button[aria-label="Save to playlist"]) {
             display: none !important;
         }
     }
