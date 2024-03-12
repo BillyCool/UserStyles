@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.3.2
+@version 1.3.3
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -49,6 +49,14 @@
         --paper-tooltip-background: bg-4;
     }
     
+    ytd-masthead[frosted-glass] #background.ytd-masthead {
+        background: var(--yt-spec-base-background);
+    }
+    
+    #actions-inner {
+        width: 100% !important;
+    }
+    
     .ytp-ce-video.ytp-ce-large-round,
     .ytp-ce-playlist.ytp-ce-large-round,
     .ytp-ce-large-round .ytp-ce-expanding-overlay-background,
@@ -90,7 +98,7 @@
     }
 
     if (hide-merch) {
-        ytd-merch-shelf-renderer {
+        ytd-merch-shelf-renderer, .ytp-featured-product-container {
             display: none !important;
         }
     }
