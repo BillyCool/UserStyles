@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.3.3
+@version 1.3.4
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -23,6 +23,7 @@
 @var checkbox hide-three-dot "[Player] Hide 3-bot button" 0
 @var checkbox hide-desc-links "[Player] Hide links in video description text" 0
 @var checkbox hide-desc "[Player] Hide video description text" 0
+@var checkbox hide-desc-transcript "[Player] Hide video description transcript" 0
 @var checkbox hide-desc-chapters "[Player] Hide video description chapters" 0
 @var checkbox hide-desc-channel "[Player] Hide video description channel info" 0
 @var checkbox hover-block "[Youtube Blocker] Show block icon on hover only" 1
@@ -110,7 +111,7 @@
     }
     
     if (hide-share) {
-        ytd-button-renderer:has(button[aria-label="Share"]) {
+        yt-button-view-model:has(button[aria-label="Share"]) {
             display: none !important;
         }
     }
@@ -140,13 +141,19 @@
     }
     
     if (hide-desc-links) {
-        #description .yt-core-attributed-string--link-inherit-color {
+        .yt-core-attributed-string--link-inherit-color > a {
             display: none !important;
         }
     }
     
     if (hide-desc) {
-        #description .ytd-text-inline-expander {
+        #description-inline-expander .ytd-text-inline-expander:not(#collapse) {
+            display: none !important;
+        }
+    }
+    
+    if (hide-desc-transcript) {
+        ytd-structured-description-content-renderer ytd-video-description-transcript-section-renderer {
             display: none !important;
         }
     }
