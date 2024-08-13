@@ -10,7 +10,8 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 # Features
 * [Global] Customize background color, comes black by default
 * [Global] Customize thumbnail roundness
-* [Subscriptions] Hide shorts
+* [Subscriptions] Grid size
+* [Subscriptions] Hide channel avatar
 * [Subscriptions] Hide upcoming videos
 * [Player] Hide reply and next buttons in the video player
 * [Player] Hide merch shelf
@@ -23,7 +24,11 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 * [Player] Hide links in video description text
 * [Player] Hide video description text
 * [Player] Hide video description chapters
+* [Player] Hide video description music info
+* [Player] Hide video description info cards
 * [Player] Hide video description channel info
+* [Comments] Hide comments with links
+* [Comments] Hide comments translate button
 * [[YouTube Blocker](https://youtube-blocker.tyczynski.dev/)] Only show block icon when hovering a video
 
 # Screenshots

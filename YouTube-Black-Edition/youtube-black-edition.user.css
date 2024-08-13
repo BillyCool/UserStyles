@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.3.4
+@version 1.4.0
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -11,7 +11,8 @@
 
 @var color bg-1 "[Global] Background color" #000
 @var range thumbnail-roundness "[Global] Thumbnail roundness" [12, 0, 16, 1, "px"]
-@var checkbox hide-shorts "[Subscriptions] Hide shorts" 0
+@var range grid-size "[Subscriptions] Grid size" [0, 0, 120, 10]
+@var checkbox hide-avatar "[Subscriptions] Hide channel avatar" 0
 @var checkbox hide-upcoming "[Subscriptions] Hide upcoming videos" 0
 @var checkbox hide-prev-next "[Player] Hide replay and next buttons in video player" 0
 @var checkbox hide-merch "[Player] Hide merch shelf" 0
@@ -25,8 +26,12 @@
 @var checkbox hide-desc "[Player] Hide video description text" 0
 @var checkbox hide-desc-transcript "[Player] Hide video description transcript" 0
 @var checkbox hide-desc-chapters "[Player] Hide video description chapters" 0
+@var checkbox hide-desc-music "[Player] Hide video description music info" 0
+@var checkbox hide-desc-info-cards "[Player] Hide video description info cards" 0
 @var checkbox hide-desc-channel "[Player] Hide video description channel info" 0
-@var checkbox hover-block "[Youtube Blocker] Show block icon on hover only" 1
+@var checkbox hide-comment-links "[Comments] Hide comments with links" 0
+@var checkbox hide-comment-translate "[Comments] Hide comments translate button" 0
+@var checkbox hover-block "[Youtube Blocker] Show block icon on hover only" 0
 ==/UserStyle== */
 @-moz-document domain("youtube.com") {
     /* Variable declarations */
@@ -65,13 +70,6 @@
     ytd-thumbnail a.ytd-thumbnail,
     ytd-thumbnail::before {
         border-radius: thumbnail-roundness !important;
-    }
-    
-    if (hide-shorts) {
-        ytd-rich-item-renderer:has([aria-label="Shorts"]),
-        ytd-rich-shelf-renderer[is-shorts=""] {
-            display: none !important;
-        }
     }
     
     if (hide-upcoming) {
@@ -159,13 +157,37 @@
     }
     
     if (hide-desc-chapters) {
-        ytd-structured-description-content-renderer ytd-horizontal-card-list-renderer {
+        ytd-structured-description-content-renderer ytd-horizontal-card-list-renderer[modern-chapters=""] {
+            display: none !important;
+        }
+    }
+    
+    if (hide-desc-music) {
+        ytd-structured-description-content-renderer ytd-horizontal-card-list-renderer[has-subtitle=""] {
+            display: none !important;
+        }
+    }
+    
+    if (hide-desc-info-cards) {
+        ytd-structured-description-content-renderer #infocards-section {
             display: none !important;
         }
     }
     
     if (hide-desc-channel) {
         ytd-structured-description-content-renderer ytd-video-description-infocards-section-renderer {
+            display: none !important;
+        }
+    }
+    
+    if (hide-link-comments) {
+        ytd-comment-thread-renderer:has(ytd-comment-view-model #content-text a) {
+            display: none !important;
+        }
+    }
+    
+    if (hide-comment-translate) {
+        ytd-comment-view-model .translate-button {
             display: none !important;
         }
     }
@@ -179,6 +201,24 @@
                     display: block !important;
                     background: var(--yt-spec-general-background-a) !important;
                 }
+            }
+        }
+    }
+    
+    if (hide-avatar) {
+        #contents ytd-rich-item-renderer #avatar-container {
+            display: none;
+        }
+    }
+    
+    ytd-two-column-browse-results-renderer[page-subtype="subscriptions"] #contents ytd-rich-item-renderer {
+        width: "calc(var(--ytd-rich-item-row-usable-width) / (var(--ytd-rich-grid-items-per-row) * (1 + %s / 100)) - var(--ytd-rich-grid-item-margin))" % grid-size;
+        margin: 0 calc(var(--ytd-rich-grid-item-margin) / 4) 12px calc(var(--ytd-rich-grid-item-margin) / 4);
+        
+        if (grid-size >= 50) {
+            #metadata-line, #byline-container {
+                font-size: 1.2rem;
+                line-height: 1.8rem;
             }
         }
     }
