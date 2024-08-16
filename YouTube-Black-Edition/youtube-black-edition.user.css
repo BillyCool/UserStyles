@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.4.0
+@version 1.4.1
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -29,7 +29,7 @@
 @var checkbox hide-desc-music "[Player] Hide video description music info" 0
 @var checkbox hide-desc-info-cards "[Player] Hide video description info cards" 0
 @var checkbox hide-desc-channel "[Player] Hide video description channel info" 0
-@var checkbox hide-comment-links "[Comments] Hide comments with links" 0
+@var checkbox hide-comment-links "[Comments] Hide comments with external links" 0
 @var checkbox hide-comment-translate "[Comments] Hide comments translate button" 0
 @var checkbox hover-block "[Youtube Blocker] Show block icon on hover only" 0
 ==/UserStyle== */
@@ -180,8 +180,9 @@
         }
     }
     
-    if (hide-link-comments) {
-        ytd-comment-thread-renderer:has(ytd-comment-view-model #content-text a) {
+    if (hide-comment-links) {
+        ytd-comment-thread-renderer:has(> ytd-comment-view-model #content-text a[target="_blank"]),
+        ytd-comment-thread-renderer ytd-comment-replies-renderer ytd-comment-view-model:has(#content-text a[target="_blank"]) {
             display: none !important;
         }
     }

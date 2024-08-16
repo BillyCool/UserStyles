@@ -27,7 +27,7 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 * [Player] Hide video description music info
 * [Player] Hide video description info cards
 * [Player] Hide video description channel info
-* [Comments] Hide comments with links
+* [Comments] Hide comments with external links
 * [Comments] Hide comments translate button
 * [[YouTube Blocker](https://youtube-blocker.tyczynski.dev/)] Only show block icon when hovering a video
 
