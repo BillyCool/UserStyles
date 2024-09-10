@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.4.1
+@version 1.4.2
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -14,6 +14,7 @@
 @var range grid-size "[Subscriptions] Grid size" [0, 0, 120, 10]
 @var checkbox hide-avatar "[Subscriptions] Hide channel avatar" 0
 @var checkbox hide-upcoming "[Subscriptions] Hide upcoming videos" 0
+@var checkbox hide-shorts "[Subscriptions] Hide shorts section" 0
 @var checkbox hide-prev-next "[Player] Hide replay and next buttons in video player" 0
 @var checkbox hide-merch "[Player] Hide merch shelf" 0
 @var checkbox hide-join "[Player] Hide membership join buttons" 0
@@ -74,6 +75,12 @@
     
     if (hide-upcoming) {
         ytd-rich-item-renderer:has([aria-label="Upcoming"]) {
+            display: none !important;
+        }
+    }
+    
+    if (hide-shorts) {
+        #contents ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts=""]) {
             display: none !important;
         }
     }

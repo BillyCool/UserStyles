@@ -13,6 +13,7 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 * [Subscriptions] Grid size
 * [Subscriptions] Hide channel avatar
 * [Subscriptions] Hide upcoming videos
+* [Subscriptions] Hide shorts section
 * [Player] Hide reply and next buttons in the video player
 * [Player] Hide merch shelf
 * [Player] Hide membership 'Join' buttons
