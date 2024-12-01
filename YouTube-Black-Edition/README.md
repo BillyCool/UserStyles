@@ -3,7 +3,7 @@
 A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 
 # Installation
-1. Install the Stylus browser extension ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne), [Opera](https://addons.opera.com/extensions/details/stylus/))
+1. Install the Stylus browser extension ([Firefox](https://addons.mozilla.org/en-US/firefox/addon/styl-us/), [Chrome](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne))
 2. Install the [userstyle](https://github.com/BillyCool/UserStyles/raw/master/YouTube-Black-Edition/youtube-black-edition.user.css)
 3. Enjoy
 
