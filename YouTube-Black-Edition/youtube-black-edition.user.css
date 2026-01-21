@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 1.4.2
+@version 2.0.0
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -11,29 +11,35 @@
 
 @var color bg-1 "[Global] Background color" #000
 @var range thumbnail-roundness "[Global] Thumbnail roundness" [12, 0, 16, 1, "px"]
-@var range grid-size "[Subscriptions] Grid size" [0, 0, 120, 10]
-@var checkbox hide-avatar "[Subscriptions] Hide channel avatar" 0
-@var checkbox hide-upcoming "[Subscriptions] Hide upcoming videos" 0
-@var checkbox hide-shorts "[Subscriptions] Hide shorts section" 0
-@var checkbox hide-prev-next "[Player] Hide replay and next buttons in video player" 0
-@var checkbox hide-merch "[Player] Hide merch shelf" 0
-@var checkbox hide-join "[Player] Hide membership join buttons" 0
-@var checkbox hide-share "[Player] Hide share button" 0
-@var checkbox hide-thanks "[Player] Hide thanks button" 0
-@var checkbox hide-clip "[Player] Hide clip button" 0
-@var checkbox hide-save "[Player] Hide save to playlist button" 0
-@var checkbox hide-three-dot "[Player] Hide 3-bot button" 0
-@var checkbox hide-desc-links "[Player] Hide links in video description text" 0
-@var checkbox hide-desc "[Player] Hide video description text" 0
-@var checkbox hide-desc-transcript "[Player] Hide video description transcript" 0
-@var checkbox hide-desc-chapters "[Player] Hide video description chapters" 0
-@var checkbox hide-desc-music "[Player] Hide video description music info" 0
-@var checkbox hide-desc-info-cards "[Player] Hide video description info cards" 0
-@var checkbox hide-desc-channel "[Player] Hide video description channel info" 0
-@var checkbox hide-comment-links "[Comments] Hide comments with external links" 0
-@var checkbox hide-comment-translate "[Comments] Hide comments translate button" 0
-@var checkbox hover-block "[Youtube Blocker] Show block icon on hover only" 0
+@var range sub-grid-size "[Subscriptions] Grid size" [4, 4, 16, 1]
+@var range sub-grid-margin "[Subscriptions] Grid margin" [8, 4, 32, 1, "px"]
+@var checkbox sub-hide-avatar "[Subscriptions] Hide channel avatar" 0
+@var checkbox sub-hide-most-relevant-shorts "[Subscriptions] Hide most relevant and short sections" 0
+@var checkbox player-hide-prev-next "[Player] Hide previous and next buttons" 0
+@var checkbox player-hide-merch "[Player] Hide merch shelf and links" 0
+@var checkbox player-hide-join "[Player] Hide Join button" 0
+@var checkbox player-hide-share "[Player] Hide Share button" 0
+@var checkbox player-hide-save "[Player] Hide Save button" 0
+@var checkbox player-hide-clip "[Player] Hide Clip button" 0
+@var checkbox player-hide-three-dot "[Player] Hide 3-bot button" 0
+@var checkbox player-hide-desc "[Player] Hide video description" 0
+@var checkbox player-hide-desc-links "[Player] Hide links in video description" 0
+@var checkbox player-hide-desc-ai-summary "[Player] Hide AI summary in video description" 0
+@var checkbox player-hide-desc-transcript "[Player] Hide transcript in video description" 0
+@var checkbox player-hide-desc-chapters "[Player] Hide chapters in video description" 0
+@var checkbox player-hide-desc-people "[Player] Hide people info in video description" 0
+@var checkbox player-hide-desc-game "[Player] Hide game info in video description" 0
+@var checkbox player-hide-desc-music "[Player] Hide music info in video description" 0
+@var checkbox player-hide-desc-reels "[Player] Hide reels in video description" 0
+@var checkbox player-hide-desc-info-cards "[Player] Hide info cards in video description" 0
+@var checkbox player-hide-desc-info-card-channel "[Player] Hide info card channel in video description" 0
+@var checkbox player-hide-desc-info-card-social "[Player] Hide info card social links in video description" 0
+@var checkbox player-hide-desc-info-card-videos "[Player] Hide info card videos in video description" 0
+@var checkbox comments-hide-links "[Comments] Hide comments with external links" 0
+@var checkbox comments-hide-pinned "[Comments] Hide pinned comments" 0
+@var checkbox comments-hide-translate "[Comments] Hide Translate button" 0
 ==/UserStyle== */
+
 @-moz-document domain("youtube.com") {
     /* Variable declarations */
     bg-2 = lighten(bg-1, 5%);
@@ -54,179 +60,196 @@
         --ytd-searchbox-legacy-button-color: bg-3;
         --ytd-searchbox-legacy-button-hover-color: bg-4;
         --paper-tooltip-background: bg-4;
+        --yt-spec-raised-background: bg-3;
     }
     
     ytd-masthead[frosted-glass] #background.ytd-masthead {
         background: var(--yt-spec-base-background);
     }
-    
-    #actions-inner {
-        width: 100% !important;
+
+    #cinematics {
+        display: none !important;
     }
-    
+
+    yt-thumbnail-view-model,
+    #thumbnail,
     .ytp-ce-video.ytp-ce-large-round,
     .ytp-ce-playlist.ytp-ce-large-round,
-    .ytp-ce-large-round .ytp-ce-expanding-overlay-background,
-    .ytp-videowall-still-round-large .ytp-videowall-still-image,
-    ytd-thumbnail a.ytd-thumbnail,
-    ytd-thumbnail::before {
+    .ytp-ce-large-round .ytp-ce-expanding-overlay-background {
         border-radius: thumbnail-roundness !important;
     }
     
-    if (hide-upcoming) {
-        ytd-rich-item-renderer:has([aria-label="Upcoming"]) {
-            display: none !important;
-        }
-    }
-    
-    if (hide-shorts) {
-        #contents ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts=""]) {
-            display: none !important;
-        }
-    }
+    ytd-browse[page-subtype="subscriptions"] ytd-two-column-browse-results-renderer #contents {
+        ytd-rich-item-renderer {
+            --ytd-rich-grid-items-per-row: sub-grid-size !important;
+            --ytd-rich-grid-item-margin: sub-grid-margin !important;
+            margin: 0 calc(var(--ytd-rich-grid-item-margin) / 2) 12px calc(var(--ytd-rich-grid-item-margin) / 2);
 
-    if (hide-prev-next) {
-        .ytp-prev-button, .ytp-next-button {
-            display: none !important;
-        }
-    }
-
-    if (hide-watch-later) {
-        #hover-overlays .ytd-thumbnail[aria-label="Watch later"] {
-            display: none !important;
-        }
-    }
-
-    if (hide-add-queue) {
-        #hover-overlays .ytd-thumbnail[aria-label="Add to queue"] {
-            display: none !important;
-        }
-    }
-
-    if (hide-merch) {
-        ytd-merch-shelf-renderer, .ytp-featured-product-container {
-            display: none !important;
-        }
-    }
-
-    if (hide-join) {
-        .ytd-recognition-shelf-renderer, #sponsor-button {
-            display: none !important;
-        }
-    }
-    
-    if (hide-share) {
-        yt-button-view-model:has(button[aria-label="Share"]) {
-            display: none !important;
-        }
-    }
-    
-    if (hide-thanks) {
-        yt-button-view-model:has(button[aria-label="Thanks"]) {
-            display: none !important;
-        }
-    }
-    
-    if (hide-clip) {
-        yt-button-view-model:has(button[aria-label="Clip"]) {
-            display: none !important;
-        }
-    }
-    
-    if (hide-save) {
-        yt-button-view-model:has(button[aria-label="Save to playlist"]) {
-            display: none !important;
-        }
-    }
-    
-    if (hide-three-dot) {
-        yt-button-shape:has(button[aria-label="More actions"]) {
-            display: none !important;
-        }
-    }
-    
-    if (hide-desc-links) {
-        .yt-core-attributed-string--link-inherit-color > a {
-            display: none !important;
-        }
-    }
-    
-    if (hide-desc) {
-        #description-inline-expander .ytd-text-inline-expander:not(#collapse) {
-            display: none !important;
-        }
-    }
-    
-    if (hide-desc-transcript) {
-        ytd-structured-description-content-renderer ytd-video-description-transcript-section-renderer {
-            display: none !important;
-        }
-    }
-    
-    if (hide-desc-chapters) {
-        ytd-structured-description-content-renderer ytd-horizontal-card-list-renderer[modern-chapters=""] {
-            display: none !important;
-        }
-    }
-    
-    if (hide-desc-music) {
-        ytd-structured-description-content-renderer ytd-horizontal-card-list-renderer[has-subtitle=""] {
-            display: none !important;
-        }
-    }
-    
-    if (hide-desc-info-cards) {
-        ytd-structured-description-content-renderer #infocards-section {
-            display: none !important;
-        }
-    }
-    
-    if (hide-desc-channel) {
-        ytd-structured-description-content-renderer ytd-video-description-infocards-section-renderer {
-            display: none !important;
-        }
-    }
-    
-    if (hide-comment-links) {
-        ytd-comment-thread-renderer:has(> ytd-comment-view-model #content-text a[target="_blank"]),
-        ytd-comment-thread-renderer ytd-comment-replies-renderer ytd-comment-view-model:has(#content-text a[target="_blank"]) {
-            display: none !important;
-        }
-    }
-    
-    if (hide-comment-translate) {
-        ytd-comment-view-model .translate-button {
-            display: none !important;
-        }
-    }
-
-    if (hover-block) {
-        ytd-thumbnail {
-            .ytbck-quickblock {
-                display: none !important;
-
-                ~/:hover ^[1..-1] {
-                    display: block !important;
-                    background: var(--yt-spec-general-background-a) !important;
+            if (sub-grid-size >= 10) {
+                .yt-lockup-metadata-view-model__title {
+                    font-size: "calc(1.6rem - (%s - 10) * 0.04rem)" % sub-grid-size;
+                    line-height: "calc(2.2rem - (%s - 10) * 0.05rem)" % sub-grid-size;
                 }
             }
         }
     }
     
-    if (hide-avatar) {
-        #contents ytd-rich-item-renderer #avatar-container {
+    if (sub-hide-avatar) {
+        #contents ytd-rich-item-renderer .yt-lockup-metadata-view-model__avatar {
             display: none;
         }
     }
+
+    if (sub-hide-most-relevant-shorts) {
+        #contents > ytd-rich-section-renderer:not(:first-child) {
+            display: none !important;
+        }
+    }
+
+    if (player-hide-prev-next) {
+        .ytp-prev-button, .ytp-next-button {
+            display: none !important;
+        }
+    }
+
+    if (player-hide-merch) {
+        ytd-merch-shelf-renderer,
+        .ytp-featured-product-container,
+        .ytp-suggested-action button[aria-label="View products"] {
+            display: none !important;
+        }
+    }
+
+    if (player-hide-join) {
+        #sponsor-button {
+            display: none !important;
+        }
+    }
     
-    ytd-two-column-browse-results-renderer[page-subtype="subscriptions"] #contents ytd-rich-item-renderer {
-        width: "calc(var(--ytd-rich-item-row-usable-width) / (var(--ytd-rich-grid-items-per-row) * (1 + %s / 100)) - var(--ytd-rich-grid-item-margin))" % grid-size;
-        margin: 0 calc(var(--ytd-rich-grid-item-margin) / 4) 12px calc(var(--ytd-rich-grid-item-margin) / 4);
-        
-        if (grid-size >= 50) {
-            #metadata-line, #byline-container {
-                font-size: 1.2rem;
-                line-height: 1.8rem;
+    if (player-hide-share) {
+        yt-button-view-model:has(button[aria-label="Share"]) {
+            display: none !important;
+        }
+    }
+    
+    if (player-hide-save) {
+        yt-button-view-model:has(button[aria-label="Save to playlist"]) {
+            display: none !important;
+        }
+    }
+    
+    if (player-hide-clip) {
+        yt-button-view-model:has(button[aria-label="Clip"]) {
+            display: none !important;
+        }
+    }
+    
+    if (player-hide-three-dot) {
+        yt-button-shape:has(button[aria-label="More actions"]) {
+            display: none !important;
+        }
+    }
+
+    #description-inline-expander {
+        if (player-hide-desc) {
+            #snippet, #expanded {
+                display: none !important;
+            }
+        }
+        else {
+             if (player-hide-desc-links) {
+                .yt-core-attributed-string--link-inherit-color > a:not([href^="/"]) {
+                    display: none !important;
+                }
+            }
+        }
+
+        if (player-hide-desc-ai-summary) {
+            #video-summary {
+                display: none !important;
+            }
+        }
+
+        if (player-hide-desc-transcript) {
+            ytd-video-description-transcript-section-renderer {
+                display: none !important;
+            }
+        }
+    
+        if (player-hide-desc-chapters) {
+            ytd-horizontal-card-list-renderer[modern-chapters=""] {
+                display: none !important;
+            }
+        }
+    
+        if (player-hide-desc-people) {
+            yt-video-attributes-section-view-model {
+                display: none !important;
+            }
+        }
+    
+        if (player-hide-desc-game) {
+            ytd-video-description-gaming-section-renderer {
+                display: none !important;
+            }
+        }
+    
+        if (player-hide-desc-music) {
+            ytd-horizontal-card-list-renderer[has-subtitle=""] {
+                display: none !important;
+            }
+        }
+
+        if (player-hide-desc-reels) {
+            ytd-reel-shelf-renderer {
+                display: none !important;
+            }
+        }
+    
+        if (player-hide-desc-info-cards) {
+            ytd-video-description-infocards-section-renderer {
+                display: none !important;
+            }
+        }
+        else {
+            if (player-hide-desc-info-card-channel) {
+                ytd-video-description-infocards-section-renderer #header {
+                    display: none !important;
+                }
+            }
+
+            if (player-hide-desc-info-card-social) {
+                ytd-video-description-infocards-section-renderer #social-links {
+                    display: none !important;
+                }
+            }
+
+            if (player-hide-desc-info-card-videos) {
+                ytd-video-description-infocards-section-renderer #infocards-section {
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+    ytd-comment-thread-renderer {
+        if (comments-hide-links) {
+            &:has( > #comment-container > ytd-comment-view-model #content-text a[target="_blank"]) {
+                display: none !important;
+            }
+        }
+
+        ytd-comment-view-model {
+            if (comments-hide-pinned) {
+                :has(ytd-pinned-comment-badge-renderer) {
+                    display: none !important;
+                }
+            }
+
+            if (comments-hide-translate) {
+                ytd-comment-view-model .translate-button {
+                    display: none !important;
+                }
             }
         }
     }

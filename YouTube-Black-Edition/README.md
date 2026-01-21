@@ -8,29 +8,35 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 3. Enjoy
 
 # Features
-* [Global] Customize background color, comes black by default
-* [Global] Customize thumbnail roundness
+* [Global] Background color
+* [Global] Thumbnail roundness
 * [Subscriptions] Grid size
+* [Subscriptions] Grid margin
 * [Subscriptions] Hide channel avatar
-* [Subscriptions] Hide upcoming videos
-* [Subscriptions] Hide shorts section
-* [Player] Hide reply and next buttons in the video player
-* [Player] Hide merch shelf
-* [Player] Hide membership 'Join' buttons
-* [Player] Hide 'Share' button
-* [Player] Hide 'Thanks' button
-* [Player] Hide 'Clip' button
-* [Player] Hide 'Save' to playlist button
-* [Player] Hide 3-dot button
-* [Player] Hide links in video description text
-* [Player] Hide video description text
-* [Player] Hide video description chapters
-* [Player] Hide video description music info
-* [Player] Hide video description info cards
-* [Player] Hide video description channel info
+* [Subscriptions] Hide most relevant and short sections
+* [Player] Hide previous and next buttons
+* [Player] Hide merch shelf and links
+* [Player] Hide Join button
+* [Player] Hide Share button
+* [Player] Hide Save button
+* [Player] Hide Clip button
+* [Player] Hide 3-bot button
+* [Player] Hide video description
+* [Player] Hide links in video description
+* [Player] Hide AI summary in video description
+* [Player] Hide transcript in video description
+* [Player] Hide chapters in video description
+* [Player] Hide people info in video description
+* [Player] Hide game info in video description
+* [Player] Hide music info in video description
+* [Player] Hide reels in video description
+* [Player] Hide info cards in video description
+* [Player] Hide info card channel in video description
+* [Player] Hide info card social links in video description
+* [Player] Hide info card videos in video description
 * [Comments] Hide comments with external links
-* [Comments] Hide comments translate button
-* [[YouTube Blocker](https://youtube-blocker.tyczynski.dev/)] Only show block icon when hovering a video
+* [Comments] Hide pinned comments
+* [Comments] Hide Translate button
 
 # Screenshots
 <a href="https://raw.githubusercontent.com/BillyCool/UserStyles/master/YouTube-Black-Edition/screenshots/2.png">
