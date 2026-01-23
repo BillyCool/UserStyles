@@ -22,8 +22,9 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 * [Player] Hide Clip button
 * [Player] Hide 3-bot button
 * [Player] Hide video description
-* [Player] Hide links in video description
+* [Player] Hide external links in video description
 * [Player] Hide AI summary in video description
+* [Player] Hide how this was made in video description
 * [Player] Hide transcript in video description
 * [Player] Hide chapters in video description
 * [Player] Hide people info in video description

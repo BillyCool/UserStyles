@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 2.0.0
+@version 2.1.0
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -23,8 +23,9 @@
 @var checkbox player-hide-clip "[Player] Hide Clip button" 0
 @var checkbox player-hide-three-dot "[Player] Hide 3-bot button" 0
 @var checkbox player-hide-desc "[Player] Hide video description" 0
-@var checkbox player-hide-desc-links "[Player] Hide links in video description" 0
+@var checkbox player-hide-desc-links "[Player] Hide external links in video description" 0
 @var checkbox player-hide-desc-ai-summary "[Player] Hide AI summary in video description" 0
+@var checkbox player-hide-desc-htwm "[Player] Hide how this was made in video description" 0
 @var checkbox player-hide-desc-transcript "[Player] Hide transcript in video description" 0
 @var checkbox player-hide-desc-chapters "[Player] Hide chapters in video description" 0
 @var checkbox player-hide-desc-people "[Player] Hide people info in video description" 0
@@ -157,10 +158,16 @@
             }
         }
         else {
-             if (player-hide-desc-links) {
-                .yt-core-attributed-string--link-inherit-color > a:not([href^="/"]) {
+            if (player-hide-desc-links) {
+                .yt-core-attributed-string--link-inherit-color > a:not([href^="/"]):not([href^="https://www.youtube.com"]) {
                     display: none !important;
                 }
+            }
+        }
+
+        if (player-hide-desc-htwm) {
+            how-this-was-made-section-view-model {
+                display: none !important;
             }
         }
 
