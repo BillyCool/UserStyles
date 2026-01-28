@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 2.1.0
+@version 2.1.1
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -254,7 +254,7 @@
             }
 
             if (comments-hide-translate) {
-                ytd-comment-view-model .translate-button {
+                .translate-button {
                     display: none !important;
                 }
             }
