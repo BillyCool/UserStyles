@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 2.1.1
+@version 2.2.0
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -21,6 +21,7 @@
 @var checkbox player-hide-share "[Player] Hide Share button" 0
 @var checkbox player-hide-save "[Player] Hide Save button" 0
 @var checkbox player-hide-clip "[Player] Hide Clip button" 0
+@var checkbox player-hide-thanks "[Player] Hide Thanks button" 0
 @var checkbox player-hide-three-dot "[Player] Hide 3-bot button" 0
 @var checkbox player-hide-desc "[Player] Hide video description" 0
 @var checkbox player-hide-desc-links "[Player] Hide external links in video description" 0
@@ -31,6 +32,8 @@
 @var checkbox player-hide-desc-people "[Player] Hide people info in video description" 0
 @var checkbox player-hide-desc-game "[Player] Hide game info in video description" 0
 @var checkbox player-hide-desc-music "[Player] Hide music info in video description" 0
+@var checkbox player-hide-desc-podcast "[Player] Hide podcast info in video description" 0
+@var checkbox player-hide-desc-course "[Player] Hide course info in video description" 0
 @var checkbox player-hide-desc-reels "[Player] Hide reels in video description" 0
 @var checkbox player-hide-desc-info-cards "[Player] Hide info cards in video description" 0
 @var checkbox player-hide-desc-info-card-channel "[Player] Hide info card channel in video description" 0
@@ -144,6 +147,12 @@
             display: none !important;
         }
     }
+
+    if (player-hide-thanks) {
+        yt-button-view-model:has(button[aria-label="Thanks"]) {
+            display: none !important;
+        }
+    }
     
     if (player-hide-three-dot) {
         yt-button-shape:has(button[aria-label="More actions"]) {
@@ -159,7 +168,7 @@
         }
         else {
             if (player-hide-desc-links) {
-                .yt-core-attributed-string--link-inherit-color > a:not([href^="/"]):not([href^="https://www.youtube.com"]) {
+                .yt-core-attributed-string--link-inherit-color > a[target="_blank"] {
                     display: none !important;
                 }
             }
@@ -207,6 +216,19 @@
             }
         }
 
+        if (player-hide-desc-podcast) {
+            ytd-video-description-course-section-renderer:has(#topic-link ytd-topic-link-renderer) {
+                display: none !important;
+            }
+        }
+
+        if (player-hide-desc-course) {
+            ytd-video-description-course-section-renderer:not(:has(#topic-link ytd-topic-link-renderer)),
+            yt-course-progress-view-model {
+                display: none !important;
+            }
+        }
+
         if (player-hide-desc-reels) {
             ytd-reel-shelf-renderer {
                 display: none !important;
@@ -246,13 +268,13 @@
             }
         }
 
-        ytd-comment-view-model {
-            if (comments-hide-pinned) {
-                :has(ytd-pinned-comment-badge-renderer) {
-                    display: none !important;
-                }
+        if (comments-hide-pinned) {
+            &:has(ytd-pinned-comment-badge-renderer) {
+                display: none !important;
             }
+        }
 
+        ytd-comment-view-model {
             if (comments-hide-translate) {
                 .translate-button {
                     display: none !important;

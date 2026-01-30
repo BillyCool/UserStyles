@@ -20,6 +20,7 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 * [Player] Hide Share button
 * [Player] Hide Save button
 * [Player] Hide Clip button
+* [Player] Hide Thanks button
 * [Player] Hide 3-bot button
 * [Player] Hide video description
 * [Player] Hide external links in video description
@@ -30,6 +31,8 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 * [Player] Hide people info in video description
 * [Player] Hide game info in video description
 * [Player] Hide music info in video description
+* [Player] Hide podcast info in video descriptio­n
+* [Player] Hide course info in video descriptio­n
 * [Player] Hide reels in video description
 * [Player] Hide info cards in video description
 * [Player] Hide info card channel in video description
