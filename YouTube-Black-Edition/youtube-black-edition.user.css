@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 2.2.1
+@version 2.2.2
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -46,7 +46,7 @@
 
 @-moz-document domain("youtube.com") {
     /* Variable declarations */
-    bg-2 = lighten(bg-1, 5%);
+    bg-2 = lighten(bg-1, 4%);
     bg-3 = lighten(bg-1, 8%);
     bg-4 = lighten(bg-1, 12%);
     bg-5 = lighten(bg-1, 16%);
@@ -54,6 +54,7 @@
     html[dark], [dark],
     html[color-version=v2_0][dark], [color-version=v2_0] [dark] {
         --yt-spec-base-background: bg-1;
+        --yt-spec-frosted-glass-desktop: bg-1;
         --yt-spec-general-background-a: bg-3;
         --yt-spec-menu-background: bg-2;
         --yt-spec-mono-tonal-hover: bg-4;
