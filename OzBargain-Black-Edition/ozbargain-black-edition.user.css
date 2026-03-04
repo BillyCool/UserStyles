@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「OzBargain Black Edition」
 @namespace BillyCool
-@version 1.2.7
+@version 1.3.0
 @description A highly customizable userstyle for OzBargain with numerious options and tweaks.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/OzBargain-Black-Edition
@@ -30,9 +30,10 @@
 @var color warning "Misc: Warning color" #ffc107
 @var color info "Misc: Info color" #2ddcff
 ==/UserStyle== */
-@-moz-document domain("ozbargain.com.au") {
+@-moz-document domain("ozbargain.com.au"), domain("cheapies.nz") {
     /* Variable declarations */
     bg-2 = lightenOrDarken(bg-1, color-step);
+    bg-3 = lightenOrDarken(bg-1, color-step * 2);
     text-2 = lightenOrDarken(text-1, color-step * 3);
 
     /* Helper functions */
@@ -57,7 +58,7 @@
         background: bg-1 !important;
     }
 
-    a {
+    a, .c-link {
         color: text-1 !important;
 
         &:hover {
@@ -458,6 +459,10 @@
                     background: bg-2 !important;
                 }
             }
+            
+            hr {
+                background-color: highlight !important;
+            }
         }
 
         .nodeinfo .extra, .nodeinfo .referral {
@@ -550,32 +555,58 @@
                 }
             }
         }
-
+        
         .cvb.voteup, .nvb.voteup {
             color: getInverseColor(success) !important;
             background: success !important;
-            border-color: lighten(success, 60%) !important;
-
-            &:hover {
-                background: darken(success, 20%) !important;
-            }
+            border-color: success !important;
         }
 
         .cvb.votedown, .nvb.votedown {
             color: getInverseColor(danger) !important;
             background: danger !important;
-            border-color: lighten(danger, 60%) !important;
-
-            &:hover {
-                background: darken(danger, 20%) !important;
-            }
+            border-color: danger !important;
         }
 
-        .fa-minus-circle {
-            color: danger !important;
+        .cvb.revoked, .nvb.revoked {
+            color: getInverseColor(secondary) !important;
+            background: secondary !important;
+            border-color: secondary !important;
+        }
+        
+        .voteup {
+            .cvb.votedown, .nvb.votedown {
+                color: danger !important;
+                background: none !important;
+            }
+        }
+        
+        .votedown {
+            .cvb.voteup, .nvb.voteup {
+                color: success !important;
+                background: none !important;
+            }
+        }
+        
+        .inact {
+            .cvb.voteup, .nvb.voteup {
+                color: success !important;
+                background: none !important;
 
-            &:hover {
-                color: darken(danger, 20%) !important;
+                &:hover {
+                    color: getInverseColor(success) !important;
+                    background: success !important;
+                }
+            }
+            
+            .cvb.votedown, .nvb.votedown {
+                color: danger !important;
+                background: none !important;
+
+                &:hover {
+                    color: getInverseColor(danger) !important;
+                    background: danger !important;
+                }
             }
         }
 
@@ -587,6 +618,16 @@
                 i {
                     color: highlight !important;
                 }
+            }
+        }
+        
+        .comment {
+            a:hover {
+                background: bg-1 !important;
+            }
+            
+            &.level0 > li:not(:last-child) {
+                border-color: highlight !important;
             }
         }
 
@@ -742,6 +783,10 @@
             li {
                 border-color: highlight !important;
                 border-right: 0 !important;
+            }
+            
+            .spacer.category {
+                background-color: bg-3 !important;
             }
         }
     }
@@ -913,7 +958,7 @@
         color: text-2 !important;
     }
 
-    .border {
+    .border, .darkmode {
         border-color: highlight !important;
     }
 
