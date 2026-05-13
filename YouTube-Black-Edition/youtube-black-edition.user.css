@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 2.2.4
+@version 2.2.5
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -112,7 +112,7 @@
     }
     
     if (sub-hide-avatar) {
-        #contents ytd-rich-item-renderer .yt-lockup-metadata-view-model__avatar {
+        #contents ytd-rich-item-renderer .ytLockupMetadataViewModelAvatar {
             display: none;
         }
     }
