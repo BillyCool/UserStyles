@@ -14,6 +14,11 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 * [Subscriptions] Grid margin
 * [Subscriptions] Hide channel avatar
 * [Subscriptions] Hide most relevant and short sections
+* [Channel] Grid size
+* [Channel] Grid margin
+* [Channel] Hide Join button
+* [Channel] Hide Community button
+* [Channel] Hide Members Only chip
 * [Player] Hide previous and next buttons
 * [Player] Hide merch shelf and links
 * [Player] Hide Join button
@@ -31,8 +36,8 @@ A pitch black userstyle for YouTube with a number of small tweaks and improvemen
 * [Player] Hide people info in video description
 * [Player] Hide game info in video description
 * [Player] Hide music info in video description
-* [Player] Hide podcast info in video descriptio­n
-* [Player] Hide course info in video descriptio­n
+* [Player] Hide podcast info in video description
+* [Player] Hide course info in video description
 * [Player] Hide reels in video description
 * [Player] Hide info cards in video description
 * [Player] Hide info card channel in video description

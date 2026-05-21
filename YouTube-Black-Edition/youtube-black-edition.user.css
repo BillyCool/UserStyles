@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name 「YouTube Black Edition」
 @namespace BillyCool
-@version 2.2.5
+@version 2.3.0
 @description A pitch black userstyle for YouTube with a number of small tweaks and improvements.
 @author BillyCool
 @homepageURL https://github.com/BillyCool/UserStyles/tree/master/YouTube-Black-Edition
@@ -15,6 +15,11 @@
 @var range sub-grid-margin "[Subscriptions] Grid margin" [8, 4, 32, 1, "px"]
 @var checkbox sub-hide-avatar "[Subscriptions] Hide channel avatar" 0
 @var checkbox sub-hide-most-relevant-shorts "[Subscriptions] Hide most relevant and short sections" 0
+@var range channel-grid-size "[Channel] Grid size" [4, 3, 8, 1]
+@var range channel-grid-margin "[Channel] Grid margin" [8, 4, 16, 1, "px"]
+@var checkbox channel-hide-join "[Channel] Hide Join button" 0
+@var checkbox channel-hide-community "[Channel] Hide Community button" 0
+@var checkbox channel-hide-members-chip "[Channel] Hide Members Only chip" 0
 @var checkbox player-hide-prev-next "[Player] Hide previous and next buttons" 0
 @var checkbox player-hide-merch "[Player] Hide merch shelf and links" 0
 @var checkbox player-hide-join "[Player] Hide Join button" 0
@@ -100,6 +105,21 @@
         }
     }
     
+    ytd-browse[page-subtype="channels"] ytd-two-column-browse-results-renderer #contents {
+        ytd-rich-item-renderer {
+            --ytd-rich-grid-items-per-row: channel-grid-size !important;
+            --ytd-rich-grid-item-margin: channel-grid-margin !important;
+            margin: 0 calc(var(--ytd-rich-grid-item-margin) / 2) 12px calc(var(--ytd-rich-grid-item-margin) / 2);
+
+            if (channel-grid-size >= 10) {
+                .yt-lockup-metadata-view-model__title {
+                    font-size: "calc(1.6rem - (%s - 10) * 0.04rem)" % channel-grid-size;
+                    line-height: "calc(2.2rem - (%s - 10) * 0.05rem)" % channel-grid-size;
+                }
+            }
+        }
+    }
+    
     yt-touch-feedback-shape {
         margin: unit(sub-grid-size * -75 / 100, px) !important;
     }
@@ -119,6 +139,24 @@
 
     if (sub-hide-most-relevant-shorts) {
         #contents > ytd-rich-section-renderer:not(:first-child) {
+            display: none !important;
+        }
+    }
+
+    if (channel-hide-join) {
+        .ytFlexibleActionsViewModelAction:has(button[aria-label="Join this channel"]) {
+            display: none !important;
+        }
+    }
+
+    if (channel-hide-community) {
+        .ytFlexibleActionsViewModelAction:has(a[aria-label="Community"]) {
+            display: none !important;
+        }
+    }
+
+    if (channel-hide-members-chip) {
+        .ytChipBarViewModelChipWrapper:has(button[aria-label="Members only"]) {
             display: none !important;
         }
     }
